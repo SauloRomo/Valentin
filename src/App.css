@@ -378,7 +378,7 @@
   background: #fff;
   color: #1a1a1a;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.45rem;
+  font-size: 0.55rem;
   line-height: 1.6;
   border: 3px solid #333;
   border-radius: 16px;
@@ -406,6 +406,27 @@
   height: auto;
   object-fit: contain;
   object-position: bottom right;
+}
+
+/* Modal de bienvenida: mismo estilo que Info (globo arriba, personaje abajo derecha, botón abajo centro) */
+.info-card--welcome {
+  padding-bottom: 4rem;
+}
+
+.info-speech-bubble--welcome {
+  bottom: 15rem;
+  max-width: 55%;
+  font-size: 0.5rem;
+  line-height: 1.65;
+}
+
+.welcome-modal-btn {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.55rem;
+  padding: 0.5rem 1rem;
 }
 
 .info-close {

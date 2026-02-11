@@ -56,6 +56,9 @@ function App() {
   const [showInfo, setShowInfo] = useState(false)
   const [showInfoEleccion, setShowInfoEleccion] = useState(false)
   const [showValentineScreen, setShowValentineScreen] = useState(false)
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false)
+  const [welcomeStep, setWelcomeStep] = useState(1)
+  const hasTriggeredWelcomeRef = useRef(false)
   const [selectedBall, setSelectedBall] = useState(null)
   const [chosenPokemon, setChosenPokemon] = useState(null)
   const bgMusicRef = useRef(null)
@@ -89,6 +92,14 @@ function App() {
       audio.play().catch(() => {})
     }
   }, [showTitleScreen, showIntro])
+
+  // Al llegar por primera vez a "Choose ur date", mostrar al muchacho con el mensaje de bienvenida
+  useEffect(() => {
+    if (showIntro || showTitleScreen || hasTriggeredWelcomeRef.current) return
+    hasTriggeredWelcomeRef.current = true
+    setShowWelcomeModal(true)
+    setWelcomeStep(1)
+  }, [showIntro, showTitleScreen])
 
   const handleSelectBall = (index) => {
     playSelectSound()
@@ -266,6 +277,25 @@ function App() {
               <button type="button" className="info-close" onClick={() => setShowInfo(false)} aria-label="Cerrar">×</button>
               <div className="info-speech-bubble">Selecciona una opción chaparrita</div>
               <img src="/info-personaje.png" alt="" className="info-personaje" />
+            </div>
+          </div>
+        )}
+        {showWelcomeModal && !showDatePage && (
+          <div className="info-overlay" role="dialog" aria-label="Mensaje del muchacho">
+            <div className="info-card info-card--welcome" onClick={(e) => e.stopPropagation()}>
+              <div className="info-speech-bubble info-speech-bubble--welcome">
+                {welcomeStep === 1 && 'Hola Chaparrita :3'}
+                {welcomeStep === 2 && 'Elegí estos pokémon porque me dijiste que eran tus favoritos y cada uno representa algo que veo en ti y lo que me gusta'}
+                {welcomeStep === 3 && 'y quiero que elijas uno para nuestra cita 😊'}
+              </div>
+              <img src="/info-personaje.png" alt="" className="info-personaje" />
+              <button
+                type="button"
+                className="intro-btn intro-btn-yes welcome-modal-btn"
+                onClick={() => (welcomeStep < 3 ? setWelcomeStep((s) => s + 1) : setShowWelcomeModal(false))}
+              >
+                {welcomeStep < 3 ? 'Siguiente' : 'Entendido'}
+              </button>
             </div>
           </div>
         )}

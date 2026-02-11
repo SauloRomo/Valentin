@@ -29,8 +29,8 @@
   left: 50%;
   transform: translateX(-50%);
   margin-bottom: 0.75rem;
-  width: 200px;
-  padding: 12px 14px;
+  width: 260px;
+  padding: 14px 16px;
   background: rgba(0, 0, 0, 0.92);
   border: 3px solid #ffcb05;
   border-radius: 8px;
@@ -56,25 +56,25 @@
 .poke-ball-hover-name {
   display: block;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   color: #ffcb05;
   text-align: center;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .poke-ball-hover-type {
   display: block;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.35rem;
+  font-size: 0.5rem;
   color: #81d4fa;
   text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .poke-ball-hover-desc {
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.3rem;
-  line-height: 1.6;
+  font-size: 0.45rem;
+  line-height: 1.7;
   color: #e0e0e0;
   margin: 0;
   text-align: center;
