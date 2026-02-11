@@ -43,3 +43,8 @@ export function playNoSound() {
   playTone(392, 0.12, 'sine', 0.12)
   setTimeout(() => playTone(330, 0.15, 'sine', 0.1), 100)
 }
+
+/** Sonido genérico al hacer clic en cualquier botón */
+export function playClickSound() {
+  playTone(520, 0.06, 'sine', 0.12)
+}

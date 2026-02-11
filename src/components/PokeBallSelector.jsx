@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { playClickSound } from '../sounds'
 import './PokeBallSelector.css'
 
 function PokeBall({ index, pokemon, isSelected, onSelect, position, isExpanded, onTap }) {
@@ -52,6 +53,7 @@ function PokeBallSelector({ options, selectedBall, onSelectBall }) {
         onSelectBall(index)
         setExpandedBall(null)
       } else {
+        playClickSound()
         setExpandedBall(index)
       }
     } else {

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import PokeBallSelector from './components/PokeBallSelector'
-import { playSelectSound, playYesSound, playNoSound } from './sounds'
+import { playSelectSound, playYesSound, playNoSound, playClickSound } from './sounds'
 
 const BG_MUSIC_SRC = '/bg-music.mp3'
 
@@ -115,8 +115,8 @@ function App() {
           className="app title-screen-app"
           role="button"
           tabIndex={0}
-          onClick={() => { startBgMusic(); setShowTitleScreen(false); }}
-          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') e.preventDefault(); startBgMusic(); setShowTitleScreen(false); }}
+          onClick={() => { playClickSound(); startBgMusic(); setShowTitleScreen(false); }}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playClickSound(); startBgMusic(); setShowTitleScreen(false); } }}
         >
           <div className="title-screen">
             <img src="/title-screen.png" alt="Valentin Adventure" className="title-screen-img" />
@@ -139,7 +139,7 @@ function App() {
               <button
                 type="button"
                 className="scene-back"
-                onClick={() => setShowTitleScreen(true)}
+                onClick={() => { playClickSound(); setShowTitleScreen(true); }}
                 aria-label="Volver"
               >
                 ← Back
@@ -149,7 +149,7 @@ function App() {
                 <button
                   type="button"
                   className="intro-btn intro-btn-yes no-screen-back"
-                  onClick={() => setShowNoScreen(false)}
+                  onClick={() => { playClickSound(); setShowNoScreen(false); }}
                 >
                   Volver a intentar
                 </button>
@@ -162,7 +162,7 @@ function App() {
               <button
                 type="button"
                 className="scene-back"
-                onClick={() => setShowTitleScreen(true)}
+                onClick={() => { playClickSound(); setShowTitleScreen(true); }}
                 aria-label="Volver"
               >
                 ← Back
@@ -213,7 +213,7 @@ function App() {
         {showValentineScreen ? (
           <>
             <div className="valentine-bg" />
-            <button type="button" className="scene-back" onClick={() => setShowValentineScreen(false)} aria-label="Volver">
+            <button type="button" className="scene-back" onClick={() => { playClickSound(); setShowValentineScreen(false); }} aria-label="Volver">
               ← Volver
             </button>
             <div className="valentine-screen">
@@ -223,10 +223,10 @@ function App() {
           </>
         ) : showDatePage ? (
           <>
-            <button type="button" className="scene-back" onClick={handleBackToSelection} aria-label="Elegir otra">
+            <button type="button" className="scene-back" onClick={() => { playClickSound(); handleBackToSelection(); }} aria-label="Elegir otra">
               ← Elegir otra
             </button>
-            <button type="button" className="scene-info scene-info--date" onClick={() => setShowInfoEleccion(true)} aria-label="Mensaje">
+            <button type="button" className="scene-info scene-info--date" onClick={() => { playClickSound(); setShowInfoEleccion(true); }} aria-label="Mensaje">
               Mensaje
             </button>
             <div className="date-page">
@@ -249,10 +249,10 @@ function App() {
           </>
         ) : (
           <>
-            <button type="button" className="scene-back" onClick={handleBack} aria-label="Volver">
+            <button type="button" className="scene-back" onClick={() => { playClickSound(); handleBack(); }} aria-label="Volver">
               ← Back
             </button>
-            <button type="button" className="scene-info" onClick={() => setShowInfo(true)} aria-label="Info">
+            <button type="button" className="scene-info" onClick={() => { playClickSound(); setShowInfo(true); }} aria-label="Info">
               Info
             </button>
             <h1 className="scene-title">Choose ur date</h1>
@@ -292,7 +292,7 @@ function App() {
               <button
                 type="button"
                 className="intro-btn intro-btn-yes welcome-modal-btn"
-                onClick={() => (welcomeStep < 3 ? setWelcomeStep((s) => s + 1) : setShowWelcomeModal(false))}
+                onClick={() => { playClickSound(); welcomeStep < 3 ? setWelcomeStep((s) => s + 1) : setShowWelcomeModal(false); }}
               >
                 {welcomeStep < 3 ? 'Siguiente' : 'Entendido'}
               </button>
@@ -300,9 +300,9 @@ function App() {
           </div>
         )}
         {showInfoEleccion && (
-          <div className="info-overlay" onClick={() => setShowInfoEleccion(false)} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Escape' && setShowInfoEleccion(false)}>
+          <div className="info-overlay" onClick={() => { playClickSound(); setShowInfoEleccion(false); }} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Escape' && setShowInfoEleccion(false)}>
             <div className="info-card" onClick={(e) => e.stopPropagation()}>
-              <button type="button" className="info-close" onClick={() => setShowInfoEleccion(false)} aria-label="Cerrar">×</button>
+              <button type="button" className="info-close" onClick={() => { playClickSound(); setShowInfoEleccion(false); }} aria-label="Cerrar">×</button>
               <div className="info-speech-bubble">Excelente elección, contacta al novio real para ponerse de acuerdo</div>
               <img src="/info-personaje.png" alt="" className="info-personaje" />
             </div>
