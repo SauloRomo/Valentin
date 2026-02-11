@@ -60,7 +60,9 @@
   z-index: 25;
 }
 
+/* X para cerrar: solo visible debajo de 1000px (ver media query) */
 .poke-ball-hover-close {
+  display: none;
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
@@ -68,7 +70,6 @@
   width: 2rem;
   height: 2rem;
   padding: 0;
-  display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
@@ -83,10 +84,6 @@
 
 .poke-ball-hover-close:hover {
   background: rgba(200, 0, 0, 0.9);
-}
-
-.poke-ball-hover--touch {
-  padding-top: 2.25rem;
 }
 
 @keyframes hoverIn {
@@ -226,7 +223,7 @@
   opacity: 0.6;
 }
 
-/* Debajo de 1000px: cuadro casi al tope de la pantalla */
+/* Solo debajo de 1000px: cuadro casi al tope + X para cerrar */
 @media (max-width: 1000px) {
   .poke-ball-hover {
     margin-bottom: 4rem;
@@ -236,5 +233,9 @@
     top: 12%;
     transform: translate(-50%, 0);
     padding-top: 2.5rem;
+  }
+
+  .poke-ball-hover-close {
+    display: flex;
   }
 }
