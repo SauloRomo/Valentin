@@ -205,11 +205,29 @@
     max-width: 280px;
     padding: 10px 12px;
     margin-bottom: 0.5rem;
+    max-height: 52vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* En móvil el panel se fija arriba para no tapar las Poké Balls */
+  .poke-ball-hover--touch {
+    position: fixed;
+    top: max(env(safe-area-inset-top, 8px), 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: auto;
+    margin-bottom: 0;
+    max-height: 58vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 25;
   }
 
   .poke-ball-hover-sprite {
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 6px;
   }
 
   .poke-ball-hover-name {
@@ -217,11 +235,19 @@
   }
 
   .poke-ball-hover-type {
-    font-size: 0.38rem;
+    font-size: 0.36rem;
   }
 
   .poke-ball-hover-desc {
-    font-size: 0.35rem;
-    line-height: 1.6;
+    font-size: 0.32rem;
+    line-height: 1.55;
+  }
+
+  .poke-ball-hover-choose {
+    margin-top: 8px;
+    padding: 10px 12px;
+    font-size: 0.4rem;
+    min-height: 44px;
+    flex-shrink: 0;
   }
 }

@@ -561,14 +561,22 @@
     bottom: 1.5rem;
   }
 
+  /* Intro: fondo completo visible (contain) y modal más compacto */
+  .scene--intro .grass-bg {
+    background-size: contain;
+    background-position: center top;
+    background-color: #0d2b0d;
+  }
+
   .intro-panel {
-    max-width: 90%;
-    padding: 1.25rem 1.5rem;
-    margin-top: 6rem;
+    max-width: 88%;
+    padding: 1rem 1.25rem;
+    margin-top: 2rem;
   }
 
   .intro-question {
-    font-size: 0.5rem;
+    font-size: 0.48rem;
+    margin-bottom: 1rem;
   }
 
   .intro-btn {
