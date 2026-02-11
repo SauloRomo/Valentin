@@ -174,7 +174,7 @@
   opacity: 0.6;
 }
 
-/* iPhone 13 series y móvil */
+/* iPhone 13 / 17 y móvil (hasta 480px) */
 @media (max-width: 480px) {
   .poke-ball-selector {
     gap: 1rem;
@@ -207,28 +207,28 @@
     max-width: 280px;
     padding: 14px 14px 16px;
     margin-bottom: 0.5rem;
-    max-height: 50vh;
-    max-height: 50dvh;
+    max-height: 48vh;
+    max-height: 48dvh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     box-sizing: border-box;
-    padding-bottom: env(safe-area-inset-bottom, 12px);
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
   }
 
-  /* En móvil el panel se fija arriba para no tapar las Poké Balls; desc y botón siempre visibles */
+  /* En móvil el panel se fija arriba; desc y "Elegir" visibles (iPhone 17 safe area) */
   .poke-ball-hover--touch {
     position: fixed;
-    top: max(env(safe-area-inset-top, 8px), 8px);
+    top: max(env(safe-area-inset-top), 8px);
     left: 50%;
     transform: translateX(-50%);
     bottom: auto;
     margin-bottom: 0;
-    max-height: 50vh;
-    max-height: 50dvh;
+    max-height: 45vh;
+    max-height: 45dvh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     z-index: 25;
-    padding-bottom: max(16px, env(safe-area-inset-bottom));
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
   }
 
   .poke-ball-hover-sprite {
@@ -258,6 +258,15 @@
     font-size: 0.4rem;
     min-height: 44px;
     flex-shrink: 0;
+  }
+}
+
+/* iPhone 17 (viewport ~402px): panel más bajo para que la descripción no se corte con Safari / Dynamic Island */
+@media (max-width: 430px) {
+  .poke-ball-hover--touch {
+    max-height: 42dvh;
+    max-height: 42vh;
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
   }
 }
 
