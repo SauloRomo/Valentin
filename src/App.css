@@ -81,7 +81,8 @@
 
 /* Fondo pantalla "¿Te gustaría iniciar la aventura?": Date Valentin Version */
 .scene--intro .grass-bg {
-  background: url(/intro-bg.png) center center / cover no-repeat;
+  background: url(/intro-bg.png) center top / contain no-repeat;
+  background-color: #0d2b0d;
 }
 
 .scene--intro .border-frame {
@@ -114,7 +115,7 @@
 
 .valentine-korean {
   font-family: 'Noto Sans KR', sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1rem, 5vw, 2rem);
   font-weight: 700;
   color: #fff;
   text-shadow:
@@ -124,14 +125,14 @@
     -2px 2px 0 #c62828,
     4px 4px 0 #1a1a1a;
   margin: 0 0 0.5rem 0;
-  padding: 0.75rem 1.25rem;
+  padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 2.5vw, 1.25rem);
   background: rgba(0, 0, 0, 0.5);
   border-radius: 12px;
 }
 
 .valentine-sub {
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.6rem;
+  font-size: clamp(0.5rem, 2vw, 0.65rem);
   color: #ffcb05;
   margin: 0;
 }
@@ -306,42 +307,42 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem 1.5rem 1.5rem;
+  padding: clamp(1.5rem, 5vw, 3rem) clamp(1rem, 3vw, 1.5rem);
   overflow-y: auto;
 }
 
 .date-page-title {
   margin: 0 0 0.5rem 0;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.9rem;
+  font-size: clamp(0.7rem, 3.5vw, 0.95rem);
   color: #ffcb05;
   text-shadow: 2px 2px 0 #1a1a1a;
 }
 
 .date-page-sprite {
-  width: 120px;
-  height: 120px;
+  width: clamp(80px, 22vw, 120px);
+  height: clamp(80px, 22vw, 120px);
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.5rem, 2vw, 1rem);
 }
 
 .date-page-cita {
   background: rgba(0, 0, 0, 0.85);
-  border: 4px solid #ffcb05;
+  border: clamp(3px, 1vw, 4px) solid #ffcb05;
   border-radius: 12px;
-  padding: 1.25rem 1.5rem;
+  padding: clamp(1rem, 3vw, 1.25rem) clamp(1rem, 3vw, 1.5rem);
   max-width: 100%;
   text-align: left;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.4rem;
+  font-size: clamp(0.36rem, 1.5vw, 0.45rem);
   line-height: 1.7;
   color: #fff;
 }
 
 .date-cita-title {
   margin: 0 0 0.75rem 0;
-  font-size: 0.55rem;
+  font-size: clamp(0.48rem, 2vw, 0.58rem);
   color: #ffcb05;
 }
 
@@ -389,15 +390,15 @@
 
 .info-speech-bubble {
   position: absolute;
-  bottom: 13.5rem;
-  right: 2rem;
+  bottom: clamp(8rem, 25vw, 13.5rem);
+  right: clamp(1rem, 3vw, 2rem);
   left: auto;
   max-width: 55%;
-  padding: 1rem 1.25rem;
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(0.75rem, 2.5vw, 1.25rem);
   background: #fff;
   color: #1a1a1a;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.55rem;
+  font-size: clamp(0.4rem, 1.8vw, 0.58rem);
   line-height: 1.6;
   border: 3px solid #333;
   border-radius: 16px;
@@ -419,8 +420,8 @@
 }
 
 .info-personaje {
-  max-width: 280px;
-  max-height: 320px;
+  max-width: min(280px, 55vw);
+  max-height: min(320px, 60vh);
   width: auto;
   height: auto;
   object-fit: contain;
@@ -495,19 +496,19 @@
 /* Revelar Pokémon elegido: caja de diálogo minimalista tipo juego */
 .pokemon-reveal {
   position: absolute;
-  bottom: 20px;
+  bottom: clamp(12px, 3vw, 20px);
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 18px;
+  gap: clamp(8px, 2vw, 12px);
+  padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 18px);
   background: rgba(0, 0, 0, 0.9);
   border: 4px solid #fff;
   border-radius: 0;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.7rem;
+  font-size: clamp(0.5rem, 2.2vw, 0.75rem);
   color: #fff;
   animation: popIn 0.25s ease;
 }
@@ -522,392 +523,9 @@
 }
 
 .reveal-sprite {
-  width: 64px;
-  height: 64px;
+  width: clamp(44px, 12vw, 64px);
+  height: clamp(44px, 12vw, 64px);
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
 
-/* ========== iPhone 13 / 13 Pro / 13 Pro Max y móviles (hasta 480px) ========== */
-@media (max-width: 480px) {
-  .app {
-    padding: 0;
-    align-items: stretch;
-  }
-
-  .scene {
-    max-width: 100%;
-    aspect-ratio: auto;
-    min-height: 100vh;
-    min-height: 100dvh;
-    min-height: -webkit-fill-available;
-  }
-
-  .border-frame {
-    border-width: 10px;
-    border-top-width: 14px;
-  }
-
-  .scene-title {
-    font-size: 0.75rem;
-    top: 14px;
-    white-space: normal;
-    text-align: center;
-    max-width: 85%;
-  }
-
-  .scene-back,
-  .scene-info {
-    top: max(10px, env(safe-area-inset-top));
-    padding: 0.6rem 0.8rem;
-    font-size: 0.45rem;
-    min-height: 44px;
-    min-width: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .scene-back {
-    left: max(10px, env(safe-area-inset-left));
-  }
-
-  .scene-info {
-    right: max(10px, env(safe-area-inset-right));
-  }
-
-  .title-screen-prompt {
-    font-size: 0.5rem;
-    bottom: 1.5rem;
-  }
-
-  /* Intro: fondo completo visible (contain) y modal más compacto */
-  .scene--intro .grass-bg {
-    background-size: contain;
-    background-position: center top;
-    background-color: #0d2b0d;
-  }
-
-  .intro-panel {
-    max-width: 88%;
-    padding: 1rem 1.25rem;
-    margin-top: 2rem;
-  }
-
-  .intro-question {
-    font-size: 0.48rem;
-    margin-bottom: 1rem;
-  }
-
-  .intro-btn {
-    font-size: 0.5rem;
-    padding: 0.7rem 1.2rem;
-    min-height: 44px;
-  }
-
-  .intro-buttons {
-    gap: 1rem;
-  }
-
-  .no-screen-img {
-    max-height: 60%;
-  }
-
-  .no-screen-back {
-    min-height: 44px;
-  }
-
-  .valentine-korean {
-    font-size: 1.35rem;
-    padding: 0.5rem 0.75rem;
-  }
-
-  .valentine-sub {
-    font-size: 0.5rem;
-  }
-
-  .date-page {
-    padding: 2rem 1rem 1rem;
-  }
-
-  .date-page-title {
-    font-size: 0.7rem;
-  }
-
-  .date-page-sprite {
-    width: 90px;
-    height: 90px;
-  }
-
-  .date-page-cita {
-    font-size: 0.35rem;
-    padding: 1rem 1.25rem;
-  }
-
-  .date-cita-title {
-    font-size: 0.45rem;
-  }
-
-  .date-page-continuar,
-  .scene-info--date {
-    min-height: 44px;
-  }
-
-  .info-card {
-    max-width: 95%;
-    padding: 0.75rem;
-  }
-
-  .info-speech-bubble {
-    font-size: 0.4rem;
-    max-width: 70%;
-    padding: 0.75rem 1rem;
-    bottom: 11rem;
-    right: 1rem;
-  }
-
-  .info-speech-bubble--welcome {
-    bottom: 12rem;
-    font-size: 0.4rem;
-    max-width: 75%;
-  }
-
-  .info-personaje {
-    max-width: 180px;
-    max-height: 220px;
-  }
-
-  .welcome-modal-btn {
-    min-height: 44px;
-    padding: 0.6rem 1.25rem;
-    font-size: 0.45rem;
-    bottom: 0.75rem;
-  }
-
-  .info-close {
-    width: 36px;
-    height: 36px;
-    top: 0.5rem;
-    right: 0.5rem;
-  }
-
-  .pokemon-reveal {
-    font-size: 0.5rem;
-    padding: 8px 12px;
-    gap: 8px;
-    bottom: 12px;
-  }
-
-  .reveal-sprite {
-    width: 48px;
-    height: 48px;
-  }
-
-  .title-screen {
-    max-width: 100%;
-  }
-
-  .title-screen-img {
-    max-height: 100vh;
-    object-fit: contain;
-  }
-}
-
-/* ========== Landscape (móvil/tablet horizontal) ========== */
-@media (orientation: landscape) and (max-height: 500px) {
-  .app {
-    align-items: stretch;
-    min-height: 100vh;
-    min-height: 100dvh;
-  }
-
-  .scene {
-    aspect-ratio: auto;
-    min-height: 100vh;
-    min-height: 100dvh;
-    min-height: -webkit-fill-available;
-    max-height: 100vh;
-    max-height: 100dvh;
-  }
-
-  .border-frame {
-    border-width: 6px;
-    border-top-width: 8px;
-  }
-
-  .scene-title {
-    top: 6px;
-    font-size: 0.6rem;
-  }
-
-  .scene-back,
-  .scene-info {
-    top: max(6px, env(safe-area-inset-top));
-    padding: 0.4rem 0.6rem;
-    font-size: 0.4rem;
-    min-height: 36px;
-    min-width: 36px;
-  }
-
-  /* Intro landscape: panel compacto centrado */
-  .scene--intro .grass-bg {
-    background-size: cover;
-    background-position: center;
-  }
-
-  .intro-screen {
-    padding: 0.5rem 1rem;
-  }
-
-  .intro-panel {
-    margin-top: 0;
-    padding: 0.6rem 1.25rem;
-    max-width: 420px;
-  }
-
-  .intro-question {
-    font-size: 0.45rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .intro-buttons {
-    gap: 0.75rem;
-  }
-
-  .intro-btn {
-    font-size: 0.45rem;
-    padding: 0.5rem 1rem;
-    min-height: 38px;
-  }
-
-  /* No screen */
-  .no-screen {
-    padding: 0.5rem;
-  }
-
-  .no-screen-img {
-    max-height: 55%;
-  }
-
-  .no-screen-back {
-    margin-top: 0.5rem;
-    min-height: 38px;
-  }
-
-  /* Página de cita: layout horizontal */
-  .date-page {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 2rem 1rem 0.5rem;
-    gap: 0 1rem;
-  }
-
-  .date-page-title {
-    order: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 0.6rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .date-page-sprite {
-    width: 70px;
-    height: 70px;
-    margin: 0;
-    order: 1;
-  }
-
-  .date-page-cita {
-    order: 2;
-    flex: 1;
-    min-width: 180px;
-    padding: 0.6rem 0.8rem;
-    font-size: 0.3rem;
-  }
-
-  .date-cita-title {
-    font-size: 0.38rem;
-    margin-bottom: 0.35rem;
-  }
-
-  .date-cita-plan li {
-    margin-bottom: 0.1rem;
-  }
-
-  .date-page-continuar {
-    order: 3;
-    width: 100%;
-    margin-top: 0.5rem;
-    min-height: 38px;
-    font-size: 0.45rem;
-  }
-
-  /* Pantalla final Valentine */
-  .valentine-screen {
-    padding: 0.5rem 1rem;
-  }
-
-  .valentine-korean {
-    font-size: 1rem;
-    padding: 0.4rem 0.6rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .valentine-sub {
-    font-size: 0.45rem;
-  }
-
-  .valentine-bg {
-    background-size: 50%;
-  }
-
-  /* Modales info */
-  .info-speech-bubble {
-    bottom: 8rem;
-    font-size: 0.35rem;
-    padding: 0.5rem 0.75rem;
-    max-width: 60%;
-  }
-
-  .info-speech-bubble--welcome {
-    bottom: 8rem;
-    font-size: 0.35rem;
-    max-width: 65%;
-  }
-
-  .info-personaje {
-    max-width: 140px;
-    max-height: 180px;
-  }
-
-  .info-card--welcome {
-    padding-bottom: 2rem;
-  }
-
-  .welcome-modal-btn {
-    bottom: 0.5rem;
-    font-size: 0.4rem;
-    padding: 0.4rem 0.8rem;
-    min-height: 36px;
-  }
-
-  .info-close {
-    width: 28px;
-    height: 28px;
-    font-size: 1.2rem;
-  }
-
-  .pokemon-reveal {
-    bottom: 8px;
-    padding: 6px 10px;
-    font-size: 0.45rem;
-    gap: 6px;
-  }
-
-  .reveal-sprite {
-    width: 40px;
-    height: 40px;
-  }
-}
