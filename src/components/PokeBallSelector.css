@@ -30,10 +30,11 @@
   transform: translateX(-50%);
   margin-bottom: 0.75rem;
   width: 260px;
-  padding: 14px 16px;
+  padding: 16px 16px 14px;
   background: rgba(0, 0, 0, 0.92);
   border: 3px solid #ffcb05;
   border-radius: 8px;
+  box-sizing: border-box;
   z-index: 20;
   pointer-events: none;
   animation: hoverIn 0.2s ease;
@@ -51,6 +52,7 @@
   margin: 0 auto 8px;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
+  object-fit: contain;
 }
 
 .poke-ball-hover-name {
@@ -203,11 +205,12 @@
   .poke-ball-hover {
     width: 92%;
     max-width: 280px;
-    padding: 10px 12px;
+    padding: 14px 14px 12px;
     margin-bottom: 0.5rem;
     max-height: 52vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
   }
 
   /* En móvil el panel se fija arriba para no tapar las Poké Balls */
@@ -227,7 +230,8 @@
   .poke-ball-hover-sprite {
     width: 48px;
     height: 48px;
-    margin-bottom: 6px;
+    margin: 4px auto 6px;
+    object-fit: contain;
   }
 
   .poke-ball-hover-name {
