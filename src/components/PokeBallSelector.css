@@ -200,11 +200,11 @@
 /* Debajo de 1000px: subir el cuadro de la descripción para que no quede tan abajo */
 @media (max-width: 1000px) {
   .poke-ball-hover {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3.75rem;
   }
 
   .poke-ball-hover--touch {
-    top: 32%;
+    top: 24%;
     transform: translate(-50%, -50%);
   }
 }
