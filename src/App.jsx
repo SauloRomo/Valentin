@@ -285,7 +285,7 @@ function App() {
             <div className="info-card info-card--welcome" onClick={(e) => e.stopPropagation()}>
               <div className="info-speech-bubble info-speech-bubble--welcome">
                 {welcomeStep === 1 && 'Hola Chaparrita :3'}
-                {welcomeStep === 2 && 'Elegí estos pokémon porque me dijiste que eran tus favoritos y cada uno representa algo que veo en ti y lo que me gusta'}
+                {welcomeStep === 2 && 'Elegí estos pokémon porque hablamos de cuáles se te hacían bonitos y cada uno representa algo que veo en ti y lo que me gusta'}
                 {welcomeStep === 3 && 'y quiero que elijas uno para nuestra cita 😊'}
               </div>
               <img src="/info-personaje.png" alt="" className="info-personaje" />
