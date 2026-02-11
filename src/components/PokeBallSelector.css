@@ -1,0 +1,149 @@
+/* Tres Poké Balls en semicírculo centrado en la parte inferior */
+.poke-ball-selector {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2.25rem;
+  padding-bottom: 18%;
+  z-index: 5;
+}
+
+.poke-ball-selector .poke-ball-wrap {
+  position: relative;
+  margin: 0;
+}
+
+.poke-ball-selector .poke-ball {
+  position: relative;
+  margin: 0;
+}
+
+/* Hover: Pokémon + descripción */
+.poke-ball-hover {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.75rem;
+  width: 200px;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.92);
+  border: 3px solid #ffcb05;
+  border-radius: 8px;
+  z-index: 20;
+  pointer-events: none;
+  animation: hoverIn 0.2s ease;
+}
+
+@keyframes hoverIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.poke-ball-hover-sprite {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 8px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.poke-ball-hover-name {
+  display: block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  color: #ffcb05;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.poke-ball-hover-type {
+  display: block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.35rem;
+  color: #81d4fa;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.poke-ball-hover-desc {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.3rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+  margin: 0;
+  text-align: center;
+}
+
+/* Las dos laterales un poco más altas (semicírculo) */
+.poke-ball-selector .poke-ball:nth-child(1),
+.poke-ball-selector .poke-ball:nth-child(3) {
+  align-self: flex-end;
+  margin-bottom: 0.85rem;
+}
+
+.poke-ball-selector .poke-ball:nth-child(2) {
+  align-self: flex-end;
+}
+
+/* Botón con imagen de Poké Ball */
+.poke-ball {
+  width: 110px;
+  height: 110px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.12s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poke-ball:hover {
+  transform: scale(1.06);
+}
+
+.poke-ball.selected {
+  transform: scale(1.08);
+}
+
+.poke-ball:focus-visible {
+  outline: 2px solid #ffcb05;
+  outline-offset: 2px;
+}
+
+/* Sombra en el suelo */
+.poke-ball-shade {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 76px;
+  height: 14px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.poke-ball-img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  display: block;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.poke-ball.selected .poke-ball-img {
+  filter: brightness(1.05);
+}
+
+.poke-ball.selected .poke-ball-shade {
+  opacity: 0.6;
+}
