@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import PokeBallSelector from './components/PokeBallSelector'
+import { playSelectSound, playYesSound, playNoSound } from './sounds'
+
+const BG_MUSIC_SRC = '/bg-music.mp3'
 
 const LEAFEON_CITA = {
   title: 'Cocinar juntos',
@@ -55,6 +58,19 @@ function App() {
   const [showValentineScreen, setShowValentineScreen] = useState(false)
   const [selectedBall, setSelectedBall] = useState(null)
   const [chosenPokemon, setChosenPokemon] = useState(null)
+  const bgMusicRef = useRef(null)
+  const musicStartedRef = useRef(false)
+
+  const startBgMusic = () => {
+    if (musicStartedRef.current) return
+    musicStartedRef.current = true
+    const audio = bgMusicRef.current
+    if (audio) {
+      audio.loop = true
+      audio.volume = 0.6
+      audio.play().catch(() => {})
+    }
+  }
 
   useEffect(() => {
     if (!showTitleScreen) return
@@ -63,31 +79,48 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [showTitleScreen])
 
+  // Mantener la música sonando al cambiar de pantalla (el audio se re-monta)
+  useEffect(() => {
+    if (showTitleScreen || !musicStartedRef.current) return
+    const audio = bgMusicRef.current
+    if (audio) {
+      audio.loop = true
+      audio.volume = 0.6
+      audio.play().catch(() => {})
+    }
+  }, [showTitleScreen, showIntro])
+
   const handleSelectBall = (index) => {
+    playSelectSound()
     setSelectedBall(index)
     setChosenPokemon(POKEMON_OPTIONS[index])
   }
 
   if (showTitleScreen) {
     return (
-      <div
-        className="app title-screen-app"
-        role="button"
-        tabIndex={0}
-        onClick={() => setShowTitleScreen(false)}
-        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') e.preventDefault(); setShowTitleScreen(false); }}
-      >
-        <div className="title-screen">
-          <img src="/title-screen.png" alt="Valentin Adventure" className="title-screen-img" />
-          <p className="title-screen-prompt">Press any key to continue</p>
+      <>
+        <audio ref={bgMusicRef} src={BG_MUSIC_SRC} preload="auto" />
+        <div
+          className="app title-screen-app"
+          role="button"
+          tabIndex={0}
+          onClick={() => { startBgMusic(); setShowTitleScreen(false); }}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') e.preventDefault(); startBgMusic(); setShowTitleScreen(false); }}
+        >
+          <div className="title-screen">
+            <img src="/title-screen.png" alt="Valentin Adventure" className="title-screen-img" />
+            <p className="title-screen-prompt">Press any key to continue</p>
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 
   if (showIntro) {
     return (
-      <div className="app">
+      <>
+        <audio ref={bgMusicRef} src={BG_MUSIC_SRC} preload="auto" />
+        <div className="app">
         <div className={`scene ${showNoScreen ? 'scene--no' : 'scene--intro'}`}>
           {showNoScreen ? (
             <>
@@ -127,12 +160,12 @@ function App() {
                 <div className="intro-panel">
                   <p className="intro-question">¿Te gustaría iniciar la aventura?</p>
                   <div className="intro-buttons">
-                    <button type="button" className="intro-btn intro-btn-yes" onClick={() => setShowIntro(false)}>
-                      Sí
-                    </button>
-                    <button type="button" className="intro-btn intro-btn-no" onClick={() => setShowNoScreen(true)}>
-                      No
-                    </button>
+              <button type="button" className="intro-btn intro-btn-yes" onClick={() => { playYesSound(); setShowIntro(false); }}>
+                Sí
+              </button>
+              <button type="button" className="intro-btn intro-btn-no" onClick={() => { playNoSound(); setShowNoScreen(true); }}>
+                No
+              </button>
                   </div>
                 </div>
               </div>
@@ -140,6 +173,7 @@ function App() {
           )}
         </div>
       </div>
+      </>
     )
   }
 
@@ -158,7 +192,9 @@ function App() {
   const showDatePage = chosenPokemon && chosenPokemon.cita
 
   return (
-    <div className="app">
+    <>
+      <audio ref={bgMusicRef} src={BG_MUSIC_SRC} preload="auto" />
+      <div className="app">
       <div className={`scene ${showValentineScreen ? 'scene--valentine' : ''}`}>
         <div className="grass-bg" />
         <div className="border-frame" />
@@ -244,6 +280,7 @@ function App() {
         )}
       </div>
     </div>
+    </>
   )
 }
 
