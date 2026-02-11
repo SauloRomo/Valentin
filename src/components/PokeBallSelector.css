@@ -7,8 +7,8 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 2.25rem;
-  padding-bottom: 18%;
+  gap: clamp(0.75rem, 4vw, 2.25rem);
+  padding-bottom: clamp(8%, 5vw, 18%);
   z-index: 5;
 }
 
@@ -22,15 +22,16 @@
   margin: 0;
 }
 
-/* Hover: Pokémon + descripción */
+/* Hover / tap: Pokémon + descripción — responsivo sin media queries */
 .poke-ball-hover {
   position: absolute;
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
   margin-bottom: 0.75rem;
-  width: 260px;
-  padding: 16px 16px 14px;
+  width: min(92%, 320px);
+  max-width: 320px;
+  padding: clamp(12px, 3vw, 18px);
   background: rgba(0, 0, 0, 0.92);
   border: 3px solid #ffcb05;
   border-radius: 8px;
@@ -40,16 +41,41 @@
   animation: hoverIn 0.2s ease;
 }
 
+/* En touch: panel centrado en pantalla para que la descripción se vea bien */
+.poke-ball-hover--touch {
+  pointer-events: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: auto;
+  margin-bottom: 0;
+  margin-top: 0;
+  max-height: 85vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 25;
+}
+
 @keyframes hoverIn {
   from { opacity: 0; transform: translateX(-50%) translateY(4px); }
   to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
+@keyframes hoverInFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.poke-ball-hover--touch {
+  animation: hoverInFade 0.2s ease;
+}
+
 .poke-ball-hover-sprite {
   display: block;
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 8px;
+  width: clamp(56px, 15vw, 80px);
+  height: clamp(56px, 15vw, 80px);
+  margin: 0 auto clamp(6px, 1.5vw, 10px);
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   object-fit: contain;
@@ -58,42 +84,37 @@
 .poke-ball-hover-name {
   display: block;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.7rem;
+  font-size: clamp(0.55rem, 2.2vw, 0.75rem);
   color: #ffcb05;
   text-align: center;
-  margin-bottom: 6px;
+  margin-bottom: clamp(4px, 1vw, 8px);
 }
 
 .poke-ball-hover-type {
   display: block;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.5rem;
+  font-size: clamp(0.42rem, 1.8vw, 0.55rem);
   color: #81d4fa;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: clamp(6px, 1.5vw, 12px);
 }
 
 .poke-ball-hover-desc {
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.45rem;
-  line-height: 1.7;
+  font-size: clamp(0.42rem, 1.6vw, 0.52rem);
+  line-height: 1.65;
   color: #e0e0e0;
   margin: 0;
   text-align: center;
 }
 
-/* En móvil el panel tiene botón y debe recibir toques */
-.poke-ball-hover--touch {
-  pointer-events: auto;
-}
-
 .poke-ball-hover-choose {
   display: block;
   width: 100%;
-  margin-top: 10px;
-  padding: 8px 12px;
+  margin-top: clamp(8px, 2vw, 12px);
+  padding: clamp(8px, 2vw, 12px) 12px;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.45rem;
+  font-size: clamp(0.42rem, 1.6vw, 0.5rem);
   color: #1a1a1a;
   background: #ffcb05;
   border: 2px solid #fff;
@@ -110,17 +131,17 @@
 .poke-ball-selector .poke-ball:nth-child(1),
 .poke-ball-selector .poke-ball:nth-child(3) {
   align-self: flex-end;
-  margin-bottom: 0.85rem;
+  margin-bottom: clamp(0.35rem, 1.5vw, 0.85rem);
 }
 
 .poke-ball-selector .poke-ball:nth-child(2) {
   align-self: flex-end;
 }
 
-/* Botón con imagen de Poké Ball */
+/* Botón con imagen de Poké Ball — tamaño fluido */
 .poke-ball {
-  width: 110px;
-  height: 110px;
+  width: clamp(64px, 18vw, 110px);
+  height: clamp(64px, 18vw, 110px);
   border: none;
   background: transparent;
   cursor: pointer;
@@ -144,22 +165,21 @@
   outline-offset: 2px;
 }
 
-/* Sombra en el suelo */
 .poke-ball-shade {
   position: absolute;
   bottom: -6px;
   left: 50%;
   transform: translateX(-50%);
-  width: 76px;
-  height: 14px;
+  width: clamp(44px, 12vw, 76px);
+  height: clamp(8px, 2vw, 14px);
   background: rgba(0, 0, 0, 0.3);
   border-radius: 50%;
   z-index: 0;
 }
 
 .poke-ball-img {
-  width: 96px;
-  height: 96px;
+  width: clamp(56px, 15vw, 96px);
+  height: clamp(56px, 15vw, 96px);
   object-fit: contain;
   display: block;
   z-index: 1;
@@ -172,174 +192,4 @@
 
 .poke-ball.selected .poke-ball-shade {
   opacity: 0.6;
-}
-
-/* iPhone 13 / 17 y móvil (hasta 480px) */
-@media (max-width: 480px) {
-  .poke-ball-selector {
-    gap: 1rem;
-    padding-bottom: 14%;
-  }
-
-  .poke-ball-selector .poke-ball:nth-child(1),
-  .poke-ball-selector .poke-ball:nth-child(3) {
-    margin-bottom: 0.5rem;
-  }
-
-  .poke-ball {
-    width: 72px;
-    height: 72px;
-  }
-
-  .poke-ball-img {
-    width: 64px;
-    height: 64px;
-  }
-
-  .poke-ball-shade {
-    width: 52px;
-    height: 10px;
-    bottom: -4px;
-  }
-
-  .poke-ball-hover {
-    width: 92%;
-    max-width: 280px;
-    padding: 14px 14px 16px;
-    margin-bottom: 0.5rem;
-    box-sizing: border-box;
-    padding-bottom: max(12px, env(safe-area-inset-bottom));
-  }
-
-  /* En móvil el panel usa TODO el espacio de arriba: desc y "Elegir" se ven sin overflow */
-  .poke-ball-hover--touch {
-    position: fixed;
-    top: max(env(safe-area-inset-top), 8px);
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: auto;
-    margin-bottom: 0;
-    width: 92%;
-    max-width: 320px;
-    max-height: 72dvh;
-    max-height: 72vh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    z-index: 25;
-    padding: 16px 14px max(20px, env(safe-area-inset-bottom));
-    display: flex;
-    flex-direction: column;
-  }
-
-  .poke-ball-hover-sprite {
-    width: 48px;
-    height: 48px;
-    margin: 4px auto 6px;
-    object-fit: contain;
-  }
-
-  .poke-ball-hover-name {
-    font-size: 0.5rem;
-  }
-
-  .poke-ball-hover-type {
-    font-size: 0.36rem;
-  }
-
-  .poke-ball-hover-desc {
-    font-size: 0.32rem;
-    line-height: 1.55;
-  }
-
-  .poke-ball-hover-choose {
-    margin-top: 8px;
-    margin-bottom: 4px;
-    padding: 10px 12px;
-    font-size: 0.4rem;
-    min-height: 44px;
-    flex-shrink: 0;
-  }
-}
-
-/* iPhone 17 y similares: mismo criterio, usar el espacio de arriba para la descripción */
-@media (max-width: 430px) {
-  .poke-ball-hover--touch {
-    max-height: 70dvh;
-    max-height: 70vh;
-  }
-}
-
-/* Landscape: poco alto, mucho ancho */
-@media (orientation: landscape) and (max-height: 500px) {
-  .poke-ball-selector {
-    gap: 0.75rem;
-    padding-bottom: 4%;
-  }
-
-  .poke-ball-selector .poke-ball:nth-child(1),
-  .poke-ball-selector .poke-ball:nth-child(3) {
-    margin-bottom: 0.25rem;
-  }
-
-  .poke-ball {
-    width: 56px;
-    height: 56px;
-  }
-
-  .poke-ball-img {
-    width: 48px;
-    height: 48px;
-  }
-
-  .poke-ball-shade {
-    width: 40px;
-    height: 8px;
-    bottom: -3px;
-  }
-
-  .poke-ball-hover {
-    width: 240px;
-    max-width: 90vw;
-    padding: 8px 10px 12px;
-    margin-bottom: 0.35rem;
-    max-height: 70vh;
-    max-height: 70dvh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: max(12px, env(safe-area-inset-bottom));
-  }
-
-  .poke-ball-hover--touch {
-    max-height: 65vh;
-    max-height: 65dvh;
-    top: max(env(safe-area-inset-top, 6px), 6px);
-    padding-bottom: max(12px, env(safe-area-inset-bottom));
-  }
-
-  .poke-ball-hover-sprite {
-    width: 40px;
-    height: 40px;
-    margin: 2px auto 4px;
-  }
-
-  .poke-ball-hover-name {
-    font-size: 0.45rem;
-  }
-
-  .poke-ball-hover-type {
-    font-size: 0.32rem;
-  }
-
-  .poke-ball-hover-desc {
-    font-size: 0.28rem;
-    line-height: 1.5;
-  }
-
-  .poke-ball-hover-choose {
-    margin-top: 6px;
-    margin-bottom: 4px;
-    padding: 6px 10px;
-    font-size: 0.35rem;
-    min-height: 36px;
-  }
 }
