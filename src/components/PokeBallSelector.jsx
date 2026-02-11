@@ -4,7 +4,7 @@ import './PokeBallSelector.css'
 
 function PokeBall({ index, pokemon, isSelected, onSelect, position, isExpanded, onTap }) {
   const [isHovered, setIsHovered] = useState(false)
-  const showPanel = isHovered || isExpanded
+  const showPanelInBall = isHovered && !isExpanded
 
   return (
     <div
@@ -12,21 +12,12 @@ function PokeBall({ index, pokemon, isSelected, onSelect, position, isExpanded, 
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {showPanel && (
-        <div className={`poke-ball-hover ${isExpanded ? 'poke-ball-hover--touch' : ''}`}>
+      {showPanelInBall && (
+        <div className="poke-ball-hover">
           <img src={pokemon.sprite} alt={pokemon.name} className="poke-ball-hover-sprite" />
           <span className="poke-ball-hover-name">{pokemon.name}</span>
           <span className="poke-ball-hover-type">{pokemon.type}</span>
           <p className="poke-ball-hover-desc">{pokemon.description}</p>
-          {isExpanded && (
-            <button
-              type="button"
-              className="poke-ball-hover-choose"
-              onClick={(e) => { e.stopPropagation(); onSelect(); }}
-            >
-              Elegir
-            </button>
-          )}
         </div>
       )}
       <button
@@ -66,21 +57,42 @@ function PokeBallSelector({ options, selectedBall, onSelectBall }) {
     setExpandedBall(null)
   }
 
+  const expandedPokemon = expandedBall !== null ? options[expandedBall] : null
+
   return (
-    <div className="poke-ball-selector">
-      {options.map((pokemon, index) => (
-        <PokeBall
-          key={pokemon.id}
-          index={index}
-          pokemon={pokemon}
-          position={positions[index]}
-          isSelected={selectedBall === index}
-          isExpanded={expandedBall === index}
-          onSelect={() => handleSelect(index)}
-          onTap={() => handleTap(index)}
-        />
-      ))}
-    </div>
+    <>
+      {expandedPokemon && (
+        <div className="poke-ball-panel-wrapper">
+          <div className="poke-ball-hover poke-ball-hover--touch">
+            <img src={expandedPokemon.sprite} alt={expandedPokemon.name} className="poke-ball-hover-sprite" />
+            <span className="poke-ball-hover-name">{expandedPokemon.name}</span>
+            <span className="poke-ball-hover-type">{expandedPokemon.type}</span>
+            <p className="poke-ball-hover-desc">{expandedPokemon.description}</p>
+            <button
+              type="button"
+              className="poke-ball-hover-choose"
+              onClick={(e) => { e.stopPropagation(); handleSelect(expandedBall); }}
+            >
+              Elegir
+            </button>
+          </div>
+        </div>
+      )}
+      <div className="poke-ball-selector">
+        {options.map((pokemon, index) => (
+          <PokeBall
+            key={pokemon.id}
+            index={index}
+            pokemon={pokemon}
+            position={positions[index]}
+            isSelected={selectedBall === index}
+            isExpanded={expandedBall === index}
+            onSelect={() => handleSelect(index)}
+            onTap={() => handleTap(index)}
+          />
+        ))}
+      </div>
+    </>
   )
 }
 
