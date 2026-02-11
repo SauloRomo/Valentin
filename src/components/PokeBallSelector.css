@@ -44,7 +44,7 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* En touch: panel casi al tope, con X para cerrar */
+/* En touch: panel centrado */
 .poke-ball-hover--touch {
   pointer-events: auto;
   position: fixed;
@@ -58,32 +58,6 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   z-index: 25;
-}
-
-/* X para cerrar: solo visible debajo de 1000px (ver media query) */
-.poke-ball-hover-close {
-  display: none;
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  z-index: 2;
-  width: 2rem;
-  height: 2rem;
-  padding: 0;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  line-height: 1;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.7);
-  border: 2px solid #ffcb05;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.poke-ball-hover-close:hover {
-  background: rgba(200, 0, 0, 0.9);
 }
 
 @keyframes hoverIn {
@@ -223,19 +197,10 @@
   opacity: 0.6;
 }
 
-/* Solo debajo de 1000px: cuadro casi al tope + X para cerrar */
+/* Debajo de 1000px: subir el cuadro de la descripción al tope de la pantalla */
 @media (max-width: 1000px) {
-  .poke-ball-hover {
-    margin-bottom: 4rem;
-  }
-
   .poke-ball-hover--touch {
-    top: 12%;
+    top: 8%;
     transform: translate(-50%, 0);
-    padding-top: 2.5rem;
-  }
-
-  .poke-ball-hover-close {
-    display: flex;
   }
 }

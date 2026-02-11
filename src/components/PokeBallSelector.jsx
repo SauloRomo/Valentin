@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react'
 import { playClickSound } from '../sounds'
 import './PokeBallSelector.css'
 
-function PokeBall({ index, pokemon, isSelected, onSelect, position, isExpanded, onTap, onClose }) {
+function PokeBall({ index, pokemon, isSelected, onSelect, position, isExpanded, onTap }) {
   const [isHovered, setIsHovered] = useState(false)
   const showPanel = isHovered || isExpanded
 
@@ -14,16 +14,6 @@ function PokeBall({ index, pokemon, isSelected, onSelect, position, isExpanded, 
     >
       {showPanel && (
         <div className={`poke-ball-hover ${isExpanded ? 'poke-ball-hover--touch' : ''}`}>
-          {isExpanded && (
-            <button
-              type="button"
-              className="poke-ball-hover-close"
-              onClick={(e) => { e.stopPropagation(); playClickSound(); onClose(); }}
-              aria-label="Cerrar"
-            >
-              ×
-            </button>
-          )}
           <img src={pokemon.sprite} alt={pokemon.name} className="poke-ball-hover-sprite" />
           <span className="poke-ball-hover-name">{pokemon.name}</span>
           <span className="poke-ball-hover-type">{pokemon.type}</span>
@@ -88,7 +78,6 @@ function PokeBallSelector({ options, selectedBall, onSelectBall }) {
           isExpanded={expandedBall === index}
           onSelect={() => handleSelect(index)}
           onTap={() => handleTap(index)}
-          onClose={() => setExpandedBall(null)}
         />
       ))}
     </div>
