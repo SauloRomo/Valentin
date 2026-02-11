@@ -255,3 +255,73 @@
     flex-shrink: 0;
   }
 }
+
+/* Landscape: poco alto, mucho ancho */
+@media (orientation: landscape) and (max-height: 500px) {
+  .poke-ball-selector {
+    gap: 0.75rem;
+    padding-bottom: 4%;
+  }
+
+  .poke-ball-selector .poke-ball:nth-child(1),
+  .poke-ball-selector .poke-ball:nth-child(3) {
+    margin-bottom: 0.25rem;
+  }
+
+  .poke-ball {
+    width: 56px;
+    height: 56px;
+  }
+
+  .poke-ball-img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .poke-ball-shade {
+    width: 40px;
+    height: 8px;
+    bottom: -3px;
+  }
+
+  .poke-ball-hover {
+    width: 240px;
+    max-width: 90vw;
+    padding: 8px 10px;
+    margin-bottom: 0.35rem;
+    max-height: 75vh;
+    max-height: 75dvh;
+  }
+
+  .poke-ball-hover--touch {
+    max-height: 80vh;
+    max-height: 80dvh;
+    top: max(env(safe-area-inset-top, 6px), 6px);
+  }
+
+  .poke-ball-hover-sprite {
+    width: 40px;
+    height: 40px;
+    margin: 2px auto 4px;
+  }
+
+  .poke-ball-hover-name {
+    font-size: 0.45rem;
+  }
+
+  .poke-ball-hover-type {
+    font-size: 0.32rem;
+  }
+
+  .poke-ball-hover-desc {
+    font-size: 0.28rem;
+    line-height: 1.5;
+  }
+
+  .poke-ball-hover-choose {
+    margin-top: 6px;
+    padding: 6px 10px;
+    font-size: 0.35rem;
+    min-height: 36px;
+  }
+}

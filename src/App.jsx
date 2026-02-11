@@ -110,6 +110,9 @@ function App() {
   if (showTitleScreen) {
     return (
       <>
+        <div className="landscape-notice" role="status" aria-live="polite">
+          Rota tu cel a horizontal para una mejor experiencia
+        </div>
         <audio ref={bgMusicRef} src={BG_MUSIC_SRC} preload="auto" />
         <div
           className="app title-screen-app"
@@ -130,6 +133,9 @@ function App() {
   if (showIntro) {
     return (
       <>
+        <div className="landscape-notice" role="status" aria-live="polite">
+          Rota tu cel a horizontal para una mejor experiencia
+        </div>
         <audio ref={bgMusicRef} src={BG_MUSIC_SRC} preload="auto" />
         <div className="app">
         <div className={`scene ${showNoScreen ? 'scene--no' : 'scene--intro'}`}>
@@ -204,6 +210,9 @@ function App() {
 
   return (
     <>
+      <div className="landscape-notice" role="status" aria-live="polite">
+        Rota tu cel a horizontal para una mejor experiencia
+      </div>
       <audio ref={bgMusicRef} src={BG_MUSIC_SRC} preload="auto" />
       <div className="app">
       <div className={`scene ${showValentineScreen ? 'scene--valentine' : ''}`}>
