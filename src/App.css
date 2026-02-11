@@ -508,3 +508,179 @@
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
+
+/* ========== iPhone / móvil ========== */
+@media (max-width: 430px) {
+  .app {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .scene {
+    max-width: 100%;
+    aspect-ratio: auto;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+
+  .border-frame {
+    border-width: 10px;
+    border-top-width: 14px;
+  }
+
+  .scene-title {
+    font-size: 0.75rem;
+    top: 14px;
+    white-space: normal;
+    text-align: center;
+    max-width: 85%;
+  }
+
+  .scene-back,
+  .scene-info {
+    top: 10px;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.45rem;
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scene-back {
+    left: 10px;
+  }
+
+  .scene-info {
+    right: 10px;
+  }
+
+  .title-screen-prompt {
+    font-size: 0.5rem;
+    bottom: 1.5rem;
+  }
+
+  .intro-panel {
+    max-width: 90%;
+    padding: 1.25rem 1.5rem;
+    margin-top: 6rem;
+  }
+
+  .intro-question {
+    font-size: 0.5rem;
+  }
+
+  .intro-btn {
+    font-size: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    min-height: 44px;
+  }
+
+  .intro-buttons {
+    gap: 1rem;
+  }
+
+  .no-screen-img {
+    max-height: 60%;
+  }
+
+  .no-screen-back {
+    min-height: 44px;
+  }
+
+  .valentine-korean {
+    font-size: 1.35rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .valentine-sub {
+    font-size: 0.5rem;
+  }
+
+  .date-page {
+    padding: 2rem 1rem 1rem;
+  }
+
+  .date-page-title {
+    font-size: 0.7rem;
+  }
+
+  .date-page-sprite {
+    width: 90px;
+    height: 90px;
+  }
+
+  .date-page-cita {
+    font-size: 0.35rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .date-cita-title {
+    font-size: 0.45rem;
+  }
+
+  .date-page-continuar,
+  .scene-info--date {
+    min-height: 44px;
+  }
+
+  .info-card {
+    max-width: 95%;
+    padding: 0.75rem;
+  }
+
+  .info-speech-bubble {
+    font-size: 0.4rem;
+    max-width: 70%;
+    padding: 0.75rem 1rem;
+    bottom: 11rem;
+    right: 1rem;
+  }
+
+  .info-speech-bubble--welcome {
+    bottom: 12rem;
+    font-size: 0.4rem;
+    max-width: 75%;
+  }
+
+  .info-personaje {
+    max-width: 180px;
+    max-height: 220px;
+  }
+
+  .welcome-modal-btn {
+    min-height: 44px;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.45rem;
+    bottom: 0.75rem;
+  }
+
+  .info-close {
+    width: 36px;
+    height: 36px;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .pokemon-reveal {
+    font-size: 0.5rem;
+    padding: 8px 12px;
+    gap: 8px;
+    bottom: 12px;
+  }
+
+  .reveal-sprite {
+    width: 48px;
+    height: 48px;
+  }
+
+  .title-screen {
+    max-width: 100%;
+  }
+
+  .title-screen-img {
+    max-height: 100vh;
+    object-fit: contain;
+  }
+}

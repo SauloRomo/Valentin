@@ -80,6 +80,30 @@
   text-align: center;
 }
 
+/* En móvil el panel tiene botón y debe recibir toques */
+.poke-ball-hover--touch {
+  pointer-events: auto;
+}
+
+.poke-ball-hover-choose {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 12px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  color: #1a1a1a;
+  background: #ffcb05;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.poke-ball-hover-choose:active {
+  background: #e6b800;
+}
+
 /* Las dos laterales un poco más altas (semicírculo) */
 .poke-ball-selector .poke-ball:nth-child(1),
 .poke-ball-selector .poke-ball:nth-child(3) {
@@ -146,4 +170,58 @@
 
 .poke-ball.selected .poke-ball-shade {
   opacity: 0.6;
+}
+
+/* iPhone / móvil */
+@media (max-width: 430px) {
+  .poke-ball-selector {
+    gap: 1rem;
+    padding-bottom: 14%;
+  }
+
+  .poke-ball-selector .poke-ball:nth-child(1),
+  .poke-ball-selector .poke-ball:nth-child(3) {
+    margin-bottom: 0.5rem;
+  }
+
+  .poke-ball {
+    width: 72px;
+    height: 72px;
+  }
+
+  .poke-ball-img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .poke-ball-shade {
+    width: 52px;
+    height: 10px;
+    bottom: -4px;
+  }
+
+  .poke-ball-hover {
+    width: 92%;
+    max-width: 280px;
+    padding: 10px 12px;
+    margin-bottom: 0.5rem;
+  }
+
+  .poke-ball-hover-sprite {
+    width: 56px;
+    height: 56px;
+  }
+
+  .poke-ball-hover-name {
+    font-size: 0.5rem;
+  }
+
+  .poke-ball-hover-type {
+    font-size: 0.38rem;
+  }
+
+  .poke-ball-hover-desc {
+    font-size: 0.35rem;
+    line-height: 1.6;
+  }
 }
