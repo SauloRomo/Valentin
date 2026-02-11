@@ -31,6 +31,7 @@
   margin-bottom: 0.75rem;
   width: min(92%, 320px);
   max-width: 320px;
+  max-height: 80vh;
   padding: clamp(12px, 3vw, 18px);
   background: rgba(0, 0, 0, 0.92);
   border: 3px solid #ffcb05;
@@ -39,6 +40,8 @@
   z-index: 20;
   pointer-events: none;
   animation: hoverIn 0.2s ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* En touch: panel centrado en pantalla para que la descripción se vea bien */
@@ -192,4 +195,16 @@
 
 .poke-ball.selected .poke-ball-shade {
   opacity: 0.6;
+}
+
+/* Debajo de 1000px: subir el cuadro de la descripción para que no quede tan abajo */
+@media (max-width: 1000px) {
+  .poke-ball-hover {
+    margin-bottom: 2.5rem;
+  }
+
+  .poke-ball-hover--touch {
+    top: 32%;
+    transform: translate(-50%, -50%);
+  }
 }
