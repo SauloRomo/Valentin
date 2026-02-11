@@ -172,8 +172,8 @@
   opacity: 0.6;
 }
 
-/* iPhone / móvil */
-@media (max-width: 430px) {
+/* iPhone 13 series y móvil */
+@media (max-width: 480px) {
   .poke-ball-selector {
     gap: 1rem;
     padding-bottom: 14%;

@@ -509,8 +509,8 @@
   image-rendering: crisp-edges;
 }
 
-/* ========== iPhone / móvil ========== */
-@media (max-width: 430px) {
+/* ========== iPhone 13 / 13 Pro / 13 Pro Max y móviles (hasta 480px) ========== */
+@media (max-width: 480px) {
   .app {
     padding: 0;
     align-items: stretch;
@@ -520,6 +520,7 @@
     max-width: 100%;
     aspect-ratio: auto;
     min-height: 100vh;
+    min-height: 100dvh;
     min-height: -webkit-fill-available;
   }
 
@@ -538,7 +539,7 @@
 
   .scene-back,
   .scene-info {
-    top: 10px;
+    top: max(10px, env(safe-area-inset-top));
     padding: 0.6rem 0.8rem;
     font-size: 0.45rem;
     min-height: 44px;
@@ -549,11 +550,11 @@
   }
 
   .scene-back {
-    left: 10px;
+    left: max(10px, env(safe-area-inset-left));
   }
 
   .scene-info {
-    right: 10px;
+    right: max(10px, env(safe-area-inset-right));
   }
 
   .title-screen-prompt {
